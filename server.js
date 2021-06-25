@@ -38,7 +38,14 @@ app.post('/api/notes', (req, res) => {
     res.json(newNote);
   });
 
-
+app.delete('/api/notes/:id', (req, res) =>{
+    notes = notes.filter( note => {
+        return note.id !== req.params.id;
+    });
+        fs.writeFileSync('./db/db.json', JSON.stringify(notes));
+        res.json(notes); 
+    
+});
 
 // ROUTER
 // The below points our server to a series of "route" files.
