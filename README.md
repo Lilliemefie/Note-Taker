@@ -30,9 +30,10 @@ If the user no longer need the saved note, then the user can delete it.
 
 ## Usage 
 *Instructions and examples for use:* 
-> **To use this application**: visit (live URL) https://fierce-ravine-67332.herokuapp.com/
+> **To use this application**: visit (live URL) https://lillie-notetaker.herokuapp.com/
 
-The 
+![Screenshot](https://github.com/Lilliemefie/Note-Taker/blob/main/assets/note%20taker.gif)
+
 
 ## Technologies 
 - HTML
@@ -46,7 +47,7 @@ The
 Please feel free to fork/clone this repository.
 
 ## Tests
-This app was testing on Heroku.com
+There are no tests for this application.
 
 ## Questions :memo:
 If you have any questions or want to make a contribution please reach out to me here: 
