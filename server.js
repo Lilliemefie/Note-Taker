@@ -21,22 +21,23 @@ app.use(express.json());
 
 var notes = require('./db/db.json');
 
-// Route '/' return the index.html file (Get Start Page)
+// Route GET '/' return the index.html file (Get Start Page)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'))
 });
-// Route '/notes' return the notes.html file (Note Taker page-to write the note)
+// Route GET '/notes' return the notes.html file (Note Taker page-to write the note)
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './public/notes.html'))
 });
-//Route '/api/notes'read the db.json file and return all saved notes as JSON (show the saved note on left-hand column)
+//Route GET '/api/notes'read the db.json file and return all saved notes as JSON (show the saved note on left-hand column)
 app.get('/api/notes', (req, res) => {
     res.json(notes);
 });
 
-
+// Route POST '/api/notes'receive a new note to save on the request body, add it to the db.json file with a unique id when it's saved
 app.post('/api/notes', (req, res) => {
     const newNote = req.body;
+    //below, set id of incoming data based on what next index of array will be
     newNote.id = notes.length.toString(); 
   
     notes.push(newNote);
@@ -44,6 +45,8 @@ app.post('/api/notes', (req, res) => {
     res.json(newNote);
   });
 
+// Bonus
+// DELETE /api/notes/:id should receive a query parameter containing the id of a note to delete.
 app.delete('/api/notes/:id', (req, res) =>{
     notes = notes.filter( note => {
         return note.id !== req.params.id;
@@ -53,12 +56,7 @@ app.delete('/api/notes/:id', (req, res) =>{
     
 });
 
-// ROUTER
-// The below points our server to a series of "route" files.
-// These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 
-// require('./routes/apiRoutes')(app);
-// require('./routes/htmlRoutes')(app);
 
 // LISTENER
 // The below code effectively "starts" our server
